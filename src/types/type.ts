@@ -25,3 +25,15 @@ export interface DBUsers {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export type BlogStatus = "draft" | "published";
+
+export interface DBBlogs {
+  id: string;
+  user_id: string;
+  title: string;
+  body: string;
+  status: BlogStatus;
+  created_at?: string;
+  updated_at?: string;
+}

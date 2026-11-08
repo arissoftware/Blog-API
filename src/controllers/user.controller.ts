@@ -311,3 +311,22 @@ export const getOneUser = asyncErrorHandler(
     });
   },
 );
+
+export const logout = asyncErrorHandler(
+  async (
+    req: Request,
+    res: Response,
+    _next: NextFunction,
+  ): Promise<Response> => {
+    const userId = req.user?.id;
+    if (!userId) {
+      throw new ApiError(401, "You are not logged in");
+    }
+
+    res.clearCookie("token");
+    return res.status(200).json({
+      success: true,
+      message: "You are logged out",
+    });
+  },
+);

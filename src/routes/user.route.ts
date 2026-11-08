@@ -4,6 +4,7 @@ import {
   getAllUsers,
   getOneUser,
   login,
+  logout,
   profile,
   register,
   updateUser,
@@ -15,11 +16,11 @@ export const userRouter = Router();
 
 userRouter.post("/register", register);
 userRouter.post("/login", login);
-userRouter.get("/profile", authenticate, profile);
-
-userRouter.patch("/update", authenticate, updateUser);
 
 userRouter.use(authenticate);
+userRouter.get("/profile", profile);
+userRouter.post("/logout", logout);
+userRouter.patch("/update", updateUser);
 userRouter.use(protect("ADMIN"));
 userRouter.get("/", getAllUsers);
 userRouter.get("/:id", getOneUser);

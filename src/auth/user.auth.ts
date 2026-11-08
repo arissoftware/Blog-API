@@ -14,8 +14,6 @@ export const authenticate: RequestHandler = asyncErrorHandler(
     }
 
     const verified = jwt.verify(token, ENV.JWT_SECRET!);
-    console.log("Verified JWT:", verified);
-    console.log("Is string:", typeof verified === "string");
     if (
       typeof verified === "string" ||
       typeof verified.id !== "string" ||
